@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="parentTriangle" class="com.BeanDefinitionInheritence.ParentTriangle">
+       <property name="points">
+       <list>
+       <ref bean="zeroPoint"/>
+       </list>
+       </property>
+    </bean>
+	<bean id="triangle" class="com.BeanDefinitionInheritence.Triangle" parent="parentTriangle">
+	<property name="points" >
+       <list merge="true">
+       <ref bean="firstPoint"/>
+        <ref bean="secondPoint"/>
+       </list>
+       </property>
+	</bean>
+	<bean id="zeroPoint" class="com.BeanDefinitionInheritence.Point">
+	<property name="x" value="0"/>
+	<property name="y" value="0"/>
+	</bean>
+	<bean id="firstPoint" class="com.BeanDefinitionInheritence.Point">
+	<property name="x" value="-20"/>
+	<property name="y" value="0"/>
+	</bean>
+    <bean id="secondPoint" class="com.BeanDefinitionInheritence.Point">
+	<property name="x" value="0"/>
+	<property name="y" value="20"/>
+	</bean>
+</beans>
